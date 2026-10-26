@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="latihan_flutter4"
+        android:label="Asisten Olahraga"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

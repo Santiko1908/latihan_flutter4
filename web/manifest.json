@@ -1,11 +1,11 @@
 {
-    "name": "latihan_flutter4",
-    "short_name": "latihan_flutter4",
+    "name": "Aplikasi Mahasiswa",
+    "short_name": "Mahasiswa",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Portal informasi akademik mahasiswa.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

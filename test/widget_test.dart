@@ -1,30 +1,60 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:latihan_flutter4/main.dart';
 
+
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Dashboard menampilkan informasi mahasiswa', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MyWidget());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Dashboard Mahasiswa'), findsOneWidget);
+    expect(find.text('Hello Mahasiswa'), findsOneWidget);
+    expect(find.text('GLOBAL INSTITUT'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('Menu navigasi menampilkan tiga pilihan', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MyWidget());
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Dashboard'), findsOneWidget);
+    expect(find.text('Profil Mahasiswa'), findsOneWidget);
+    expect(find.text('Mata Kuliah'), findsOneWidget);
+  });
+
+  testWidgets('Halaman Profil Mahasiswa dapat dibuka', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MyWidget());
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Profil Mahasiswa'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Rayhan Ihsan Fadhilah'), findsOneWidget);
+    expect(find.text('1126180062'), findsOneWidget);
+  });
+
+  testWidgets('Halaman Mata Kuliah dapat dibuka', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MyWidget());
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Mata Kuliah'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('APLIKASI MOBILE'), findsOneWidget);
+    expect(find.text('IT GOVERNANCE'), findsOneWidget);
+    expect(find.text('REKAYASA PERANGKAT LUNAK'), findsOneWidget);
   });
 }
